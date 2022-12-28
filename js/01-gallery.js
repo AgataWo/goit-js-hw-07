@@ -22,14 +22,19 @@ const addImages = galleryItems
 gallery.addEventListener("click", (e) => {
   e.preventDefault();
   console.log(e.target);
+
+  if(e.target.dataset.source){
+    
   const instance = basicLightbox.create(`
     <img src="${e.target.dataset.source}" width="1280" height="720">
 `);
-
-  instance.show();
-  document.addEventListener("keydown", (e)=>{
-if(e.key==="Escape"){
-  instance.close();
-}
-  });
+instance.show();
+document.addEventListener("keydown", (e)=>{
+  if(e.key==="Escape"){
+    instance.close();
+  }
+    });
+}console.log("no image to show");
+  
+  
 });
