@@ -14,17 +14,8 @@ const addImages = galleryItems
 
 gallery.insertAdjacentHTML("beforeend", addImages);
 
-gallery.addEventListener("click", (e) => {
-    e.preventDefault();
-    const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" width="1280" height="720">
-`);
-
-  instance.show();
-  document.addEventListener("keydown", (e)=>{
-if(e.key==="Escape"){
-  instance.close();
-}
-  });
-let galleryLbox = new SimpleLightbox('.gallery a').next();
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+  captionPosition: "bottom",
 });
